@@ -1,0 +1,5 @@
+const spotifyAccessToken =
+  "BQCfHr3VDTqYY803DhpnqVWQKup3Eafp6U98AsFMu5qvdQ2cy2AkNv2N2ipIf8oL1NUZXEZY6m1LUEvZA8KZhxZEDkr9FM4OZKyVG5Q1_QORsauK9VQTl3BXqZqhYkQQDFcgmnhAANV8s6RB04iT7VFvw14XWiyNSM0";
+
+//Indian Summer
+//https://open.spotify.com/album/2afNG92zO2m0WT1FvU8PvA?highlight=spotify:track:42nkVBjWYVhiijbof5zySm
