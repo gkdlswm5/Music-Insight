@@ -12,6 +12,8 @@ function InputTab({
   handleSubmit,
   handleChange,
   handleSelect,
+  handleNewRelease,
+  handleLogin,
   // dropdownValue,
 }) {
   return (
@@ -38,6 +40,12 @@ function InputTab({
 
       <Button variant="outline-secondary" onClick={handleSubmit}>
         Search
+      </Button>
+      <Button variant="outline-secondary" onClick={handleLogin}>
+        Spotify Login
+      </Button>
+      <Button variant="outline-secondary" onClick={handleNewRelease}>
+        Get New Releases
       </Button>
     </Container>
   );

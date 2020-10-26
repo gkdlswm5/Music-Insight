@@ -1,11 +1,14 @@
 import axios from "axios";
 
 export default {
-  userAuthorize: () => {
+  login: () => {
     return axios.get("/login");
   },
-  APItest: () => {
-    return axios.get("/login2");
+  token: () => {
+    return axios.get("/callback");
+  },
+  test: () => {
+    return axios.get("/test");
   },
   getAllNewReleases: () => {
     return axios.get("https://api.spotify.com/v1/browse/new-releases");
