@@ -5,7 +5,7 @@ export default {
     return axios.get("/login");
   },
   token: () => {
-    return axios.get("/callback");
+    return axios.post("/token");
   },
   test: () => {
     return axios.get("/test");

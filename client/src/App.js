@@ -16,19 +16,15 @@ function App() {
 
   const handleLogin = () => {
     console.log("working");
-    // window.location = "http://localhost:3001/login";
+    API.token().then((data) => console.log(data));
+    // window.location = "http://localhost:3001/token";
     // fetch("http://localhost:3000/login").then((data) => console.log(data));
   };
 
-  // const testAPI = () => {
-  //   fetch("https://api.spotify.com/v1/me", {
-  //     headers: { Authorization: "Bearer " + token },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => console.log(data));
-  // };
-
-  // testAPI();
+  const getToken = () => {
+    // window.location = "http://localhost:3001/authorize";
+    // fetch("http://localhost:3001/refresh").then((data) => console.log(data));
+  };
 
   const [data, setData] = useState({
     search: "",
@@ -53,6 +49,7 @@ function App() {
     API.getAllNewReleases().then((data) => console.log(data));
   };
 
+  //request param (song / artist / album )
   // const handleSelect = (e) => {
   //   // e.preventDefault();
   //   console.log(e);
@@ -74,6 +71,7 @@ function App() {
         handleChange={handleChange}
         handleNewRelease={handleNewRelease}
         handleLogin={handleLogin}
+        getToken={getToken}
         // handleSelect={handleSelect}
         // dropdownValue={dropdownValue}
       />
