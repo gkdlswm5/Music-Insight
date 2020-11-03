@@ -17,11 +17,8 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [searchBy, setSearchBy] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    API.login();
-    // API.test();
-    // console.log(searchBy);
+  const handleSubmit = () => {
+    API.token();
   };
 
   const handleChange = (e) => {
