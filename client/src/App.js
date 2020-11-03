@@ -14,10 +14,7 @@ function App() {
   console.log(parsed);
   console.log(token);
 
-  const [data, setData] = useState({
-    search: "",
-    searchValue: "",
-  });
+  const [searchValue, setSearchValue] = useState("");
   const [searchBy, setSearchBy] = useState("");
 
   const handleSubmit = (e) => {
@@ -28,13 +25,8 @@ function App() {
   };
 
   const handleChange = (e) => {
-    setData((data.search = e.target.value));
-    console.log(data);
-  };
-
-  const handleNewRelease = (e) => {
-    e.preventDefault();
-    API.getAllNewReleases().then((data) => console.log(data));
+    setSearchValue(e.target.value);
+    console.log(searchValue);
   };
 
   const placeholder = () => {
