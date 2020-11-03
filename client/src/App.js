@@ -14,18 +14,6 @@ function App() {
   console.log(parsed);
   console.log(token);
 
-  const handleLogin = () => {
-    console.log("working");
-    API.token().then((data) => console.log(data));
-    // window.location = "http://localhost:3001/token";
-    // fetch("http://localhost:3000/login").then((data) => console.log(data));
-  };
-
-  const getToken = () => {
-    // window.location = "http://localhost:3001/authorize";
-    // fetch("http://localhost:3001/refresh").then((data) => console.log(data));
-  };
-
   const [data, setData] = useState({
     search: "",
     searchValue: "",
@@ -49,17 +37,17 @@ function App() {
     API.getAllNewReleases().then((data) => console.log(data));
   };
 
-  //request param (song / artist / album )
-  // const handleSelect = (e) => {
-  //   // e.preventDefault();
-  //   console.log(e);
-  //   // setSearchBy(e.target.value);
-  //   // console.log(searchBy);
-  // };
+  const placeholder = () => {
+    API.token().then((data) => console.log(data));
+    console.log("working");
+  };
 
-  const loadNewPlaylist = () => {
-    API.getAllNewReleases().then((data) => {
+  const test = () => {
+    API.token().then((data) => {
       console.log(data);
+      API.test().then((data) => {
+        console.log(data);
+      });
     });
   };
 
@@ -69,11 +57,8 @@ function App() {
       <InputTab
         handleSubmit={handleSubmit}
         handleChange={handleChange}
-        handleNewRelease={handleNewRelease}
-        handleLogin={handleLogin}
-        getToken={getToken}
-        // handleSelect={handleSelect}
-        // dropdownValue={dropdownValue}
+        placeholder={placeholder}
+        test={test}
       />
       <Data></Data>
     </div>

@@ -4,9 +4,11 @@ export default {
   login: () => {
     return axios.get("/login");
   },
+  //token route
   token: () => {
-    return axios.post("/token");
+    return axios.get("/token");
   },
+  //test value - should return Elvis
   test: () => {
     return axios.get("/test");
   },

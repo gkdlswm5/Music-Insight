@@ -12,10 +12,8 @@ function InputTab({
   handleSubmit,
   handleChange,
   handleSelect,
-  handleNewRelease,
-  handleLogin,
-  getToken,
-  // dropdownValue,
+  placeholder,
+  test,
 }) {
   return (
     <Container
@@ -26,8 +24,6 @@ function InputTab({
       <InputGroup name="searchValue" className="mb-3" onChange={handleChange}>
         <DropdownButton
           onSelect={handleSelect}
-          // value={value}
-          // as={InputGroup.Prepend}
           name="search"
           variant="outline-secondary"
           title="Search By ..."
@@ -42,14 +38,11 @@ function InputTab({
       <Button variant="outline-secondary" onClick={handleSubmit}>
         Search
       </Button>
-      <Button variant="outline-secondary" onClick={handleLogin}>
-        Spotify Login
+      <Button variant="outline-secondary" onClick={placeholder}>
+        Placeholder
       </Button>
-      <Button variant="outline-secondary" onClick={getToken}>
-        Get Token
-      </Button>
-      <Button variant="outline-secondary" onClick={handleNewRelease}>
-        Get New Releases
+      <Button variant="outline-secondary" onClick={test}>
+        Test
       </Button>
     </Container>
   );
