@@ -9,57 +9,40 @@ function App() {
   //value being looked up
   useEffect(() => {});
 
-  let parsed = querystring.parse(window.location.search);
-  let token = parsed.code;
-  console.log(parsed);
-  console.log(token);
+  // let parsed = querystring.parse(window.location.search);
+  // let token = parsed.code;
+  // console.log(parsed);
+  // console.log(token);
 
-  const handleLogin = () => {
-    console.log("working");
-    API.token().then((data) => console.log(data));
-    // window.location = "http://localhost:3001/token";
-    // fetch("http://localhost:3000/login").then((data) => console.log(data));
-  };
-
-  const getToken = () => {
-    // window.location = "http://localhost:3001/authorize";
-    // fetch("http://localhost:3001/refresh").then((data) => console.log(data));
-  };
-
-  const [data, setData] = useState({
-    search: "",
-    searchValue: "",
-  });
   const [searchBy, setSearchBy] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const [displayData, setDisplayData] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    API.login();
-    // API.test();
-    // console.log(searchBy);
-  };
-
+  //sets searchinput value as the hook
   const handleChange = (e) => {
-    setData((data.search = e.target.value));
-    console.log(data);
+    setSearchValue(e.target.value);
+    console.log(searchValue);
   };
 
-  const handleNewRelease = (e) => {
-    e.preventDefault();
-    API.getAllNewReleases().then((data) => console.log(data));
+  const handleSubmit = () => {
+    API.token();
+    //API call by searchValue
   };
 
-  //request param (song / artist / album )
-  // const handleSelect = (e) => {
-  //   // e.preventDefault();
-  //   console.log(e);
-  //   // setSearchBy(e.target.value);
-  //   // console.log(searchBy);
-  // };
+  const placeholder = () => {
+    API.token().then((data) => console.log(data));
+    console.log("working");
+  };
 
-  const loadNewPlaylist = () => {
-    API.getAllNewReleases().then((data) => {
+  const test = () => {
+    API.token().then((data) => {
       console.log(data);
+      API.test().then((data) => {
+        console.log(data);
+        let cleansedData = data.data.body.items;
+        console.log(cleansedData);
+        setDisplayData(cleansedData);
+      });
     });
   };
 
@@ -67,15 +50,12 @@ function App() {
     <div>
       <Header />
       <InputTab
-        handleSubmit={handleSubmit}
         handleChange={handleChange}
-        handleNewRelease={handleNewRelease}
-        handleLogin={handleLogin}
-        getToken={getToken}
-        // handleSelect={handleSelect}
-        // dropdownValue={dropdownValue}
+        handleSubmit={handleSubmit}
+        placeholder={placeholder}
+        test={test}
       />
-      <Data></Data>
+      <Data displayData={displayData}></Data>
     </div>
   );
 }
