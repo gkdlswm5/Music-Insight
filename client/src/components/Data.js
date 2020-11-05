@@ -2,19 +2,28 @@ import React from "react";
 import { Container } from "react-bootstrap";
 
 function Data({ displayData }) {
-  //console logs array
-  // console.log(displayData);
-
-  // const urlLink = () => {
-  //   {
-  //     data.external_urls.spotify;
-  //   }
-  // };
-
+  console.log(displayData);
   const listItems = displayData.map((data) => {
     console.log(data);
-    console.log(data.artists);
-    console.log(data.artists[0]);
+    // console.log(data.artists);
+    // console.log(data.artists[0]);
+
+    var artistArray = [];
+    var artists = "";
+    var artistName = data.artists;
+
+    //artists now has values of artists
+    artistArray.push(artistName);
+    // artistArray.pop();
+
+    console.log(artistArray);
+    // console.log(artistArray.length);
+
+    for (var i = 0; i < artistArray.length; i++) {
+      console.log(artistArray[i]);
+      console.log(artists);
+    }
+
     return (
       <>
         <Container>
