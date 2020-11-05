@@ -9,7 +9,7 @@ function Header() {
         maxWidth: "500px",
         fontWeight: "bold",
         fontFamily: "serif",
-        fontSize: "20px",
+        fontSize: "26px",
       }}>
       Music Insight
     </Container>

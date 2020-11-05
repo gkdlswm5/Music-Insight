@@ -11,6 +11,7 @@ export default {
   },
   //search by song
   searchBySong: (name) => {
+    // return axios.get("/api/song/" + name);
     return axios.get("/api/song/" + name);
   },
   //search by song artist

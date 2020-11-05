@@ -6,7 +6,6 @@ import API from "./utils/API";
 import querystring from "query-string";
 
 function App() {
-  //value being looked up
   useEffect(() => {});
 
   // let parsed = querystring.parse(window.location.search);
@@ -25,8 +24,14 @@ function App() {
   };
 
   const handleSubmit = () => {
-    API.token();
-    //API call by searchValue
+    API.token().then(() => {
+      // API.searchBySong(searchValue).then((data) => console.log(data))
+      API.searchBySong(searchValue).then((data) => {
+        console.log(data);
+        let cleansedData = data.data.body.tracks.items;
+        setDisplayData(cleansedData);
+      });
+    });
   };
 
   const placeholder = () => {

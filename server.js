@@ -69,6 +69,17 @@ app.get("/test", (req, res) => {
   );
 });
 
+//route for searching by song
+app.get("/api/song/:name", (req, res) => {
+  let name = req.params.name;
+  console.log(name);
+  let query = `track:${name}`;
+  spotifyApi.searchTracks(query).then((data) => {
+    console.log(data);
+    res.send(data);
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`App is listening on ${PORT}`);
 });
