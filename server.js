@@ -24,6 +24,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+var token = "";
+
 //mongoose
 
 //Spotify
@@ -47,6 +49,8 @@ app.get("/token", (req, res) => {
       res.send(data);
       // Save the access token so that it's used in future calls
       spotifyApi.setAccessToken(data.body["access_token"]);
+      token = data.body["access_token"];
+      console.log(token);
     },
     function (err) {
       console.log("Something went wrong when retrieving an access token", err);
@@ -78,6 +82,29 @@ app.get("/api/song/:name", (req, res) => {
     console.log(data);
     res.send(data);
   });
+});
+
+//fetches song data
+app.get("/analysis/song/:songID", (req, res) => {
+  var songID = req.params.songID;
+
+  spotifyApi.getAudioAnalysisForTrack(songID).then((data) => res.send(data));
+
+  //ATTEMPTED USING SPOTIFY
+  //   let songID = req.params.songID;
+  //   console.log(songID);
+  //   var queryURL = querystring.stringify({
+  //     url: "https://api.spotify.com/v1/audio-analysis/" + songID,
+  //     headers: {
+  //       Authorization: token,
+  //     },
+  //   });
+  //   console.log(queryURL);
+
+  //   axios
+  //     .get(queryURL)
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.log(error));
 });
 
 app.listen(PORT, () => {

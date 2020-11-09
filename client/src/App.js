@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import InputTab from "./components/InputTab";
 import Header from "./components/Header";
 import Data from "./components/Data";
+import Info from "./components/Info";
 import API from "./utils/API";
 import querystring from "query-string";
 
@@ -13,9 +14,18 @@ function App() {
   // console.log(parsed);
   // console.log(token);
 
+  //INPUT
   const [searchBy, setSearchBy] = useState("");
   const [searchValue, setSearchValue] = useState("");
+
+  //DATA
   const [displayData, setDisplayData] = useState([]);
+  const [musicData, setMusicData] = useState([]);
+  const [bars, setBars] = useState([]);
+  const [beats, setBeats] = useState([]);
+  const [sections, setSections] = useState([]);
+  const [segments, setSegments] = useState([]);
+  const [track, setTrack] = useState([]);
 
   //sets searchinput value as the hook
   const handleChange = (e) => {
@@ -28,15 +38,25 @@ function App() {
       // API.searchBySong(searchValue).then((data) => console.log(data))
       API.searchBySong(searchValue).then((data) => {
         console.log(data);
+        console.log("Searching ...");
         let cleansedData = data.data.body.tracks.items;
         setDisplayData(cleansedData);
       });
     });
   };
 
+  //SONGANALYSIS PATH (TEST)
   const placeholder = () => {
-    API.token().then((data) => console.log(data));
-    console.log("working");
+    API.token().then(() => {
+      API.songAnalysis("42nkVBjWYVhiijbof5zySm").then((data) => {
+        // console.log(data)
+        console.log(data);
+        setTrack(data.data.body.track);
+        setMusicData(data);
+        // console.log(data.data.body.track);
+      });
+    });
+    console.log("Analysis path");
   };
 
   const test = () => {
@@ -60,7 +80,8 @@ function App() {
         placeholder={placeholder}
         test={test}
       />
-      <Data displayData={displayData}></Data>
+      <Data displayData={displayData} track={track} />
+      <Info musicData={musicData} track={track} />
     </div>
   );
 }
