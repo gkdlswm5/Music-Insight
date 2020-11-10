@@ -47,19 +47,6 @@ function Data({ displayData, track }) {
     //returns spotify link
     console.log(data.external_urls.spotify);
 
-    //artists now has values of artists
-    // artistArray.push(artistName);
-    // artistArray.pop();
-
-    // console.log(artistArray);
-    // console.log(artistArray.length);
-
-    // for multiple artists
-    // for (var i = 0; i < artistArray.length; i++) {
-    //   console.log(artistArray[i]);
-    //   console.log(artists);
-    // }
-
     return (
       <>
         <Container>
@@ -79,6 +66,18 @@ function Data({ displayData, track }) {
       </>
     );
   });
+  //artists now has values of artists
+  // artistArray.push(artistName);
+  // artistArray.pop();
+
+  // console.log(artistArray);
+  // console.log(artistArray.length);
+
+  // for multiple artists
+  // for (var i = 0; i < artistArray.length; i++) {
+  //   console.log(artistArray[i]);
+  //   console.log(artists);
+  // }
 
   return (
     <Container

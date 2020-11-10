@@ -21,10 +21,10 @@ function App() {
   //DATA
   const [displayData, setDisplayData] = useState([]);
   const [musicData, setMusicData] = useState([]);
+  const [segments, setSegments] = useState([]);
   const [bars, setBars] = useState([]);
   const [beats, setBeats] = useState([]);
   const [sections, setSections] = useState([]);
-  const [segments, setSegments] = useState([]);
   const [track, setTrack] = useState([]);
 
   //sets searchinput value as the hook
@@ -49,11 +49,12 @@ function App() {
   const placeholder = () => {
     API.token().then(() => {
       API.songAnalysis("42nkVBjWYVhiijbof5zySm").then((data) => {
-        // console.log(data)
-        console.log(data);
+        // console.log(data);
+        // console.log(data.data.body.segments);
         setTrack(data.data.body.track);
         setMusicData(data);
-        // console.log(data.data.body.track);
+        setSegments(data.data.body.segments);
+        setSections(data.data.body.sections);
       });
     });
     console.log("Analysis path");
@@ -63,9 +64,8 @@ function App() {
     API.token().then((data) => {
       console.log(data);
       API.test().then((data) => {
-        console.log(data);
+        // console.log(data);
         let cleansedData = data.data.body.items;
-        console.log(cleansedData);
         setDisplayData(cleansedData);
       });
     });
@@ -81,7 +81,12 @@ function App() {
         test={test}
       />
       <Data displayData={displayData} track={track} />
-      <Info musicData={musicData} track={track} />
+      <Info
+        musicData={musicData}
+        track={track}
+        segments={segments}
+        sections={sections}
+      />
     </div>
   );
 }
