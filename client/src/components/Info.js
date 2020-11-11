@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
+import * as d3 from "d3";
 
 function Info({ musicData, track, segments, sections }) {
   console.log(musicData);
@@ -32,7 +33,13 @@ function Info({ musicData, track, segments, sections }) {
   //     options: options
   // });
 
-  //   for (var propoert in musicData)
+  d3.select(".graph")
+    .selectAll("p")
+    .data([1, 2, 3])
+    .enter()
+    .append("p")
+    .text((data) => data);
+
   return (
     <Container
       style={{
@@ -45,6 +52,9 @@ function Info({ musicData, track, segments, sections }) {
       <div>Tempo: {track.tempo}</div>
       <br />
       <div>Key: CHANGE INTO NOTE {track.key}</div>
+      <br />
+      <h5>Visualized</h5>
+      <div className="graph"></div>
     </Container>
   );
 }
